@@ -1,0 +1,6 @@
+nameFirst,nameMiddle,nameLast,nameInitials,sex,language,phoneNumber,email,Currency,salaryAmount,accountNumber,bankId,bankName
+John,A,Smith,JS,M,EN,+91-9878583810,john.smith@company.com,USD,65000.00,987654321001,BOFAUS3N,Bank of America
+Anita,R,Kumar,AK,F,EN,+91-9876543210,anita.kumar@company.com,INR,72000.00,123456789012,HDFCINBB,HDFC Bank
+Lukas,,Weber,LW,M,DE,+91-9010070678,lukas.weber@company.com,EUR,58000.00,445566778899,DEUTDEFF,Deutsche Bank
+Sofia,M,Rossi,SR,F,IT,+91-9998887776,sofia.rossi@company.com,EUR,61000.00,998877665544,BCITITMM,Intesa Sanpaolo
+Daniel,T,Brown,DB,M,EN,+91-9432108763,daniel.brown@company.com,GBP,69000.00,776655443322,BARCGB22,Barclays Bank

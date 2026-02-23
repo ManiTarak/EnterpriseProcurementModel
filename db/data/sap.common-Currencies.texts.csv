@@ -1,0 +1,20 @@
+code,locale,name,descr
+USD,en,US Dollar,United States Dollar
+USD,de,US-Dollar,Währung der Vereinigten Staaten
+USD,hi,अमेरिकी डॉलर,संयुक्त राज्य अमेरिका की मुद्रा
+
+EUR,en,Euro,Official currency of Eurozone countries
+EUR,de,Euro,Offizielle Währung der Eurozone
+EUR,hi,यूरो,यूरोपीय संघ के देशों की मुद्रा
+
+INR,en,Indian Rupee,Official currency of India
+INR,de,Indische Rupie,Währung von Indien
+INR,hi,भारतीय रुपया,भारत की आधिकारिक मुद्रा
+
+GBP,en,British Pound Sterling,United Kingdom currency
+GBP,de,Britisches Pfund,Währung des Vereinigten Königreichs
+GBP,hi,ब्रिटिश पाउंड स्टर्लिंग,यूनाइटेड किंगडम की मुद्रा
+
+JPY,en,Japanese Yen,Japanese currency with no minor units
+JPY,de,Japanischer Yen,Währung Japans ohne Dezimalstellen
+JPY,hi,जापानी येन,जापान की मुद्रा जिसमें दशमलव नहीं होते

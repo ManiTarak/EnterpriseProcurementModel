@@ -1,0 +1,11 @@
+code,symbol,minorUnit,name,descr
+USD,$,2,US Dollar,United States Dollar used for international trade
+EUR,€,2,Euro,Official currency of the Eurozone countries
+INR,₹,2,Indian Rupee,Official currency of India
+GBP,£,2,British Pound Sterling,United Kingdom currency
+JPY,¥,0,Japanese Yen,Japanese currency with no decimal minor units
+AUD,$,2,Australian Dollar,Official currency of Australia
+CAD,$,2,Canadian Dollar,Canada national currency
+CHF,CHF,2,Swiss Franc,Swiss currency used in Switzerland and Liechtenstein
+SGD,S$,2,Singapore Dollar,Currency used in Singapore
+CNY,¥,2,Chinese Yuan Renminbi,Official currency of China

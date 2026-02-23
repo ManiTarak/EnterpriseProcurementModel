@@ -1,0 +1,6 @@
+NODE_KEY,BP_ROLE,EMAIL_ADDRESS,PHONE_NUMBER,FAX_NUMBER,WEB_ADDRESS,BP_ID,COMPANY_NAME,Address_Guid_NODE_KEY
+BP101,SU,procurement@tatasteel.com,+91-22-66658282,+91-22-66658181,www.tatasteel.com,SUP-IN-001,Tata Steel Limited,ADDR101
+BP102,CU,purchasing@relianceretail.com,+91-22-35558000,+91-22-35558001,www.relianceretail.com,CUS-IN-002,Reliance Retail Ltd.,ADDR102
+BP103,SU,orders@bosch-industrial.de,+49-711-40040990,+49-711-40040999,www.bosch-industrial.com,SUP-DE-003,Bosch Industrial Solutions,ADDR103
+BP104,LO,contact@dhl-logistics.com,+49-228-1820,+49-228-1829888,www.dhl.com,LOG-DE-004,DHL Supply Chain,ADDR104
+BP105,CU,procurement@marriott.com,+1-301-380-3000,+1-301-380-3001,www.marriott.com,CUS-US-005,Marriott International Inc.,ADDR105
