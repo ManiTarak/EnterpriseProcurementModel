@@ -1,0 +1,93 @@
+### reterive service document
+http://localhost:4003/odata/v4/epm
+### reterive metadata
+http://localhost:4003/odata/v4/epm/$metadata
+
+###GET Purchase orders
+http://localhost:4003/odata/v4/epm/POEntitySet
+
+###GET Single Purchase order
+http://localhost:4003/odata/v4/epm/POEntitySet/PO002
+
+### Get Count of Purchase orders
+http://localhost:4003/odata/v4/epm/POEntitySet/$count
+
+###Get only certain fields of purchase order
+http://localhost:4003/odata/v4/epm/POEntitySet?$select=NET_Amount,PO_ID,CURRENCY_code
+
+###Get BP having name Reliance Retail Ltd.
+http://localhost:4003/odata/v4/epm/BPEntitySet?$filter=COMPANY_NAME eq 'Reliance Retail Ltd.'
+
+### Get BPs having name contains R in there company name
+
+http://localhost:4003/odata/v4/epm/BPEntitySet?$filter=Contains(COMPANY_NAME,'a')
+
+### Get Addressess of BPs
+http://localhost:4003/odata/v4/epm/BPEntitySet?$select=BP_ID&$expand=Address_Guid
+
+### get addresses from addressset
+
+http://localhost:4003/odata/v4/epm/AddressSet
+
+### get items from purchase order
+http://localhost:4003/odata/v4/epm/ProductViewSet
+
+### Get pos and poitems from pos
+
+http://localhost:4003/odata/v4/epm/POEntitySet?$expand=Items
+
+### POST Data to PoItems
+
+POST http://localhost:4003/odata/v4/epm/POEntitySet
+Content-Type: application/json
+
+    {
+      "CURRENCY_code": "USD",
+      "GROSS_Amount": 2000,
+      "NET_Amount": 1431,
+      "TAX_Amount": 987,
+      "NODE_KEY": "PO006",
+      "PO_ID": "PO-2026-0006",
+      "PARTNER_GUID_NODE_KEY": "BP103",
+      "LIFECYCLE_STATUS": "A",
+      "OVERALL_STATUS": "O"
+    }
+
+### Patch updating the amount of PO001 amount
+PATCH http://localhost:4003/odata/v4/epm/POEntitySet/PO001
+Content-Type: application/json
+
+{
+   "GROSS_Amount": 1930
+}
+
+### delete Purchase Order
+DELETE http://localhost:4003/odata/v4/epm/POEntitySet/PO001
+
+### post update po and pois together
+POST http://localhost:4003/odata/v4/epm/POEntitySet
+Content-Type: application/json
+
+{
+      "CURRENCY_code": "INR",
+      "GROSS_Amount": 1850,
+      "NET_Amount": 720,
+      "TAX_Amount": 130,
+      "NODE_KEY": "PO007",
+      "PO_ID": "PO-2026-0007",
+      "PARTNER_GUID_NODE_KEY": "BP101",
+      "LIFECYCLE_STATUS": "N",
+      "OVERALL_STATUS": "O",
+      "Items": [
+        {
+          "CURRENCY_code": "INR",
+          "GROSS_Amount": 1850,
+          "NET_Amount": 720,
+          "TAX_Amount": 130,
+          "NODE_KEY": "ITEM009",
+          "PARENT_KEY_NODE_KEY": "PO007",
+          "PO_ITEM_POS": 10,
+          "PRODUCT_GUID_NODE_KEY": "PRD103"
+        }
+      ]
+    }

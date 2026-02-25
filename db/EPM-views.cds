@@ -37,6 +37,7 @@ context ViewsEPM{
       }
 
       define view ![ItemView] as select from transaction.poitems{
+        key NODE_KEY,
         PARENT_KEY.PARTNER_GUID.NODE_KEY as ![SupplierID],
         PRODUCT_GUID.NODE_KEY as ![ProductKey],
         GROSS_Amount as ![GrossAmount],
