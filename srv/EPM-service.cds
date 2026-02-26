@@ -11,5 +11,6 @@ service EPMService {
     entity AddressSet as projection on master.address;
     entity ProductViewSet as projection on views.ProductView;
     entity POitemsset as projection on transaction.poitems;
+    entity EmployeeSet as projection on master.Employees;
     
 }
