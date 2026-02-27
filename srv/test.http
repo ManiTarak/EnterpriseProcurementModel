@@ -1,44 +1,44 @@
 ### reterive service document
-http://localhost:4004/odata/v4/epm
+http://localhost:4004/odata/v4/EPMService
 ### reterive metadata
-http://localhost:4004/odata/v4/epm/$metadata
+http://localhost:4004/odata/v4/EPMService/$metadata
 
 ###GET Purchase orders
-http://localhost:4004/odata/v4/epm/POEntitySet
+http://localhost:4004/odata/v4/EPMService/POEntitySet
 
 ###GET Single Purchase order
-http://localhost:4004/odata/v4/epm/POEntitySet/PO002
+http://localhost:4004/odata/v4/EPMService/POEntitySet/PO002
 
 ### Get Count of Purchase orders
-http://localhost:4004/odata/v4/epm/POEntitySet/$count
+http://localhost:4004/odata/v4/EPMService/POEntitySet/$count
 
 ###Get only certain fields of purchase order
-http://localhost:4004/odata/v4/epm/POEntitySet?$select=NET_Amount,PO_ID,CURRENCY_code
+http://localhost:4004/odata/v4/EPMService/POEntitySet?$select=NET_Amount,PO_ID,CURRENCY_code
 
 ###Get BP having name Reliance Retail Ltd.
-http://localhost:4004/odata/v4/epm/BPEntitySet?$filter=COMPANY_NAME eq 'Reliance Retail Ltd.'
+http://localhost:4004/odata/v4/EPMService/BPEntitySet?$filter=COMPANY_NAME eq 'Reliance Retail Ltd.'
 
 ### Get BPs having name contains R in there company name
 
-http://localhost:4004/odata/v4/epm/BPEntitySet?$filter=Contains(COMPANY_NAME,'a')
+http://localhost:4004/odata/v4/EPMService/BPEntitySet?$filter=Contains(COMPANY_NAME,'a')
 
 ### Get Addressess of BPs
-http://localhost:4004/odata/v4/epm/BPEntitySet?$select=BP_ID&$expand=Address_Guid
+http://localhost:4004/odata/v4/EPMService/BPEntitySet?$select=BP_ID&$expand=Address_Guid
 
 ### get addresses from addressset
 
-http://localhost:4004/odata/v4/epm/AddressSet
+http://localhost:4004/odata/v4/EPMService/AddressSet
 
 ### get items from purchase order
-http://localhost:4004/odata/v4/epm/ProductViewSet
+http://localhost:4004/odata/v4/EPMService/ProductViewSet
 
 ### Get pos and poitems from pos
 
-http://localhost:4004/odata/v4/epm/POEntitySet?$expand=Items
+http://localhost:4004/odata/v4/EPMService/POEntitySet?$expand=Items
 
 ### POST Data to PoItems
 
-POST http://localhost:4004/odata/v4/epm/POEntitySet
+POST http://localhost:4004/odata/v4/EPMService/POEntitySet
 Content-Type: application/json
 
     {
@@ -54,7 +54,7 @@ Content-Type: application/json
     }
 
 ### Patch updating the amount of PO001 amount
-PATCH http://localhost:4004/odata/v4/epm/POEntitySet/PO001
+PATCH http://localhost:4004/odata/v4/EPMService/POEntitySet/PO001
 Content-Type: application/json
 
 {
@@ -62,10 +62,10 @@ Content-Type: application/json
 }
 
 ### delete Purchase Order
-DELETE http://localhost:4004/odata/v4/epm/POEntitySet/PO001
+DELETE http://localhost:4004/odata/v4/EPMService/POEntitySet/PO001
 
 ### post update po and pois together
-POST http://localhost:4004/odata/v4/epm/POEntitySet
+POST http://localhost:4004/odata/v4/EPMService/POEntitySet
 Content-Type: application/json
 
 {
@@ -93,10 +93,10 @@ Content-Type: application/json
     }
 
 ###
-http://localhost:4004/odata/v4/epm/EmployeeSet
+http://localhost:4004/odata/v4/EPMService/EmployeeSet
 
 ### POST create employee
-POST http://localhost:4004/odata/v4/epm/EmployeeSet
+POST http://localhost:4004/odata/v4/EPMService/EmployeeSet
 Content-Type: application/json
 
     {
@@ -115,3 +115,9 @@ Content-Type: application/json
       "bankId": "BOFAUS3N",
       "bankName": "Bank of America"
     }
+
+### get most expensive Purchase order using functions 
+http://localhost:4004/odata/v4/EPMService/getMostExpensiveOrder
+
+### increase the gross amount of a po by 20k
+POST http://localhost:4004/odata/v4/EPMService/POEntitySet('PO001')/MJJM.Service.EPMService.increaseSalary

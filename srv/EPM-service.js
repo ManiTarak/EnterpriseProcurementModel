@@ -1,5 +1,5 @@
 module.exports = cds.service.impl(async function(){
-    const {EmployeeSet} = this.entities;
+    const {EmployeeSet,POEntitySet} = this.entities;
 
     this.before(['UPDATE','CREATE'],EmployeeSet,(req,res)=>{
              const data= req.data;
@@ -15,4 +15,30 @@ module.exports = cds.service.impl(async function(){
           res.results.map((i)=>{i.salaryAmount=i.salaryAmount+i.salaryAmount*10/100})
     });
 
+     
+    this.on("getMostExpensiveOrder",async(req,res)=>{
+        try{
+            const tx = cds.tx(req);
+            const myData = await tx.read(POEntitySet).orderBy({
+                "GROSS_Amount":'desc'
+            }).limit(1);
+            return myData;
+        }catch(error){
+          return "Hey Amigo"+error.toString();
+        }
+    })
+
+    this.on("increaseSalary",async (req,res)=>{
+         try{
+           const POID = req.params[0];
+           const tx = cds.tx(req);
+           await tx.update(POEntitySet).with({
+                "GROSS_Amount":{'+=':20000}
+           }).where(POID);
+           const updatedrecord = await tx.read(POEntitySet).where(POID);
+           return updatedrecord;
+         }catch(error){
+           return "Hey Amigo"+error;
+         }
+    });
 })
