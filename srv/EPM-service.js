@@ -30,6 +30,7 @@ module.exports = cds.service.impl(async function(){
 
     this.on("increaseSalary",async (req,res)=>{
          try{
+          req.user.is('Editor')||req.reject(403)
            const POID = req.params[0];
            const tx = cds.tx(req);
            await tx.update(POEntitySet).with({

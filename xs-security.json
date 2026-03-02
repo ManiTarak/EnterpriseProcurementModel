@@ -1,0 +1,49 @@
+{
+  "xsappname" : "EnterpriseProcurementModel", 
+  "scopes"     : [ { 
+                    "name" : "$XSAPPNAME.Display", 
+                    "description" : "display" }, 
+                   { 
+                    "name" : "$XSAPPNAME.Edit", 
+                    "description" : "edit" }, 
+                   { 
+                    "name" : "$XSAPPNAME.Boost", 
+                    "description" : "increaseSalary"  } 
+                 ], 
+  "attributes" : [ { 
+                    "name" : "Country", 
+                    "description" : "Country", 
+                    "valueType" : "string" }, 
+                   {
+                    "name" : "BankName", 
+                    "description" : "Bank Name of Employee", 
+                    "valueType" : "string" } 
+                 ], 
+  "role-templates": [ { 
+                       "name"                : "Viewer", 
+                       "description"         : "Access read only data", 
+                       "scope-references"    : [ 
+                                          "$XSAPPNAME.Display" ], 
+                       "attribute-references": [ {
+                        "name":"Country"
+                        
+                       } ]  
+                      }, 
+                      { "name"               : "Editor", 
+                        "description"        : "Edit, delete books", 
+                        "scope-references"   : [ 
+                                              "$XSAPPNAME.Edit", 
+                                              "$XSAPPNAME.Boost" ]
+                      } 
+                     ],
+                  "authorities":[
+                    "$ACCEPT_GRANTED_AUTHORITIES"
+                  ],
+                  "oauth2-configuration":{
+                    "token-validity":900,
+                    "redirect-uris":[
+                      "https://*.cfapps.us10-001.hana.ondemand.com/login/callback"
+                    ]
+                  },
+                  "xsenableasyncservice":"true"
+}

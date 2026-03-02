@@ -1,11 +1,12 @@
 ### reterive service document
 http://localhost:4004/odata/v4/EPMService
+Authorization: Basic Tarak
 ### reterive metadata
 http://localhost:4004/odata/v4/EPMService/$metadata
-
+Authorization: Basic Tarak
 ###GET Purchase orders
 http://localhost:4004/odata/v4/EPMService/POEntitySet
-
+Authorization: Basic Tarak
 ###GET Single Purchase order
 http://localhost:4004/odata/v4/EPMService/POEntitySet/PO002
 
@@ -28,7 +29,7 @@ http://localhost:4004/odata/v4/EPMService/BPEntitySet?$select=BP_ID&$expand=Addr
 ### get addresses from addressset
 
 http://localhost:4004/odata/v4/EPMService/AddressSet
-
+Authorization: Basic mani:
 ### get items from purchase order
 http://localhost:4004/odata/v4/EPMService/ProductViewSet
 
@@ -94,7 +95,7 @@ Content-Type: application/json
 
 ###
 http://localhost:4004/odata/v4/EPMService/EmployeeSet
-
+Authorization: Basic mani:
 ### POST create employee
 POST http://localhost:4004/odata/v4/EPMService/EmployeeSet
 Content-Type: application/json

@@ -4,7 +4,8 @@
   "description": "A simple CAP project.",
   "dependencies": {
     "@sap/cds": "^9",
-    "express": "^4"
+    "express": "^4",
+    "@sap/xssec": "^4"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^2"
@@ -12,5 +13,30 @@
   "scripts": {
     "start": "cds-serve"
   },
-  "private": true
+  "private": true,
+  "cds": {
+  "requires": {
+    "auth":{
+    "[development]": {
+        "stratagy": "mocked",
+        "users": {
+          "mani": {
+            "roles": ["Viewer"],
+            "userAttributes": {
+              "BankName": ["Bank of America"],
+              "Country": ["IND"]
+            }
+          },
+          "Tarak": {
+            "roles": ["Editor"],
+            "userAttributes": {
+              "BankName": ["Bank of America"],
+              "Country": ["IND"]
+            }
+          }
+        }
+      }
+    }
+  }
+}
 }
