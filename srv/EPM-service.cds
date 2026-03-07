@@ -12,8 +12,8 @@ service EPMService  @(path:'EPMService', requires:'authenticated-user') {
     entity BPEntitySet as projection on master.businesspartner;
     //@readonly
     entity AddressSet @(restrict:[
-        {grant:['READ'], to:'Viewer', where:'COUNTRY=$user.Country'},
-        {grant:['WRITE'], to:'Editor'}
+        {grant:['READ'], to:'Display', where:'COUNTRY=$user.Country'},
+        {grant:['WRITE'], to:'Edit'}
         ]) as projection on master.address;
     entity ProductViewSet as projection on views.ProductView;
     entity POitemsset as projection on transaction.poitems;
@@ -22,8 +22,8 @@ service EPMService  @(path:'EPMService', requires:'authenticated-user') {
        Deletable:false,
     }
     entity EmployeeSet @(restrict:[
-        {grant:['READ'], to:'Viewer', where:'bankName=$user.BankName'},
-        {grant:['WRITE'], to:'Editor'}
+        {grant:['READ'], to:'Display', where:'bankName=$user.BankName'},
+        {grant:['WRITE'], to:'Edit'}
         ]) as projection on master.Employees;
     
     function getMostExpensiveOrder() returns POEntitySet;
