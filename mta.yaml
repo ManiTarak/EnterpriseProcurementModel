@@ -34,6 +34,26 @@ modules:
       buildpack: nodejs_buildpack
     requires:
       - name: EnterpriseProcurementModel-db
+  - name: EnterpriseProcurementModel
+    type: approuter.nodejs
+    path: app/
+    parameters:
+      keep-existing-routes: true
+      disk-quota: 256M
+      memory: 256M
+    requires:
+      - name: srv-api
+        group: destinations
+        properties:
+          name: srv-api # must be used in xs-app.json as well
+          url: ~{srv-url}
+          forwardAuthToken: true
+      - name: EnterpriseProcurementModel-auth
+    provides:
+      - name: app-api
+        properties:
+          app-protocol: ${protocol}
+          app-uri: ${default-uri}
 
 resources:
   - name: EnterpriseProcurementModel-db
@@ -54,16 +74,20 @@ resources:
           credential-types:
             - "binding-secret"
             - "x509"
+          redirect-uris:
+            - https://*~{app-api/app-uri}/**
         role-collections:
-          - name: 'Viewer (EnterpriseProcurementModel ${org}-${space})'
+          - name: 'Display (EnterpriseProcurementModel ${org}-${space})'
             description: 'generated'
             role-template-references:
-              - '$XSAPPNAME.Viewer'
-          - name: 'Editor (EnterpriseProcurementModel ${org}-${space})'
+              - '$XSAPPNAME.Display'
+          - name: 'Edit (EnterpriseProcurementModel ${org}-${space})'
             description: 'generated'
             role-template-references:
-              - '$XSAPPNAME.Editor'
+              - '$XSAPPNAME.Edit'
           - name: 'userattributes (EnterpriseProcurementModel ${org}-${space})'
             description: 'generated'
             role-template-references:
               - '$XSAPPNAME.userattributes'
+    requires:
+      - name: app-api

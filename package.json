@@ -21,7 +21,7 @@
       "auth": {
         "[production]": {
           "startagy": "JWT"
-      },
+        },
         "[development]": {
           "stratagy": "mocked",
           "users": {
@@ -54,8 +54,12 @@
           }
         },
         "kind": "mocked"
+      },
+      "[production]": {
+        "auth": {
+          "kind": "xsuaa"
+        }
       }
-      
     }
   }
 }
