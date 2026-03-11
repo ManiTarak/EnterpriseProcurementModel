@@ -1,0 +1,170 @@
+{
+  "_version": "1.82.0",
+  "sap.app": {
+    "id": "epm.ui.epmui",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.20.4",
+      "toolsId": "63ff6dc5-f232-4c1c-8ad8-173b0a495e1a"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/EPMService/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.01"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.145.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "epm.ui.epmui.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "POEntitySetList",
+          "target": "POEntitySetList"
+        },
+        {
+          "pattern": "POEntitySet({key}):?query:",
+          "name": "POEntitySetObjectPage",
+          "target": "POEntitySetObjectPage"
+        },
+        {
+          "pattern": "POEntitySet({key})/Items({key2}):?query:",
+          "name": "POitemssetObjectPage",
+          "target": "POitemssetObjectPage"
+        }
+      ],
+      "targets": {
+        "POEntitySetList": {
+          "type": "Component",
+          "id": "POEntitySetList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/POEntitySet",
+              "variantManagement": "Page",
+              "navigation": {
+                "POEntitySet": {
+                  "detail": {
+                    "route": "POEntitySetObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  }
+                }
+              },
+              "initialLoad": "Enabled"
+            }
+          }
+        },
+        "POEntitySetObjectPage": {
+          "type": "Component",
+          "id": "POEntitySetObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/POEntitySet",
+              "navigation": {
+                "Items": {
+                  "detail": {
+                    "route": "POitemssetObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "POitemssetObjectPage": {
+          "type": "Component",
+          "id": "POitemssetObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/POEntitySet/Items"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  },
+  "sap.fe": {
+    "app": {
+      "enableLazyLoading": true
+    }
+  }
+}

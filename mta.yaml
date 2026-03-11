@@ -24,8 +24,8 @@ modules:
         properties:
           srv-url: ${default-url}
     requires:
-      - name: EnterpriseProcurementModel-db
       - name: EnterpriseProcurementModel-auth
+      - name: EnterpriseProcurementModel-db
 
   - name: EnterpriseProcurementModel-db-deployer
     type: hdb
@@ -56,11 +56,6 @@ modules:
           app-uri: ${default-uri}
 
 resources:
-  - name: EnterpriseProcurementModel-db
-    type: com.sap.xs.hdi-container
-    parameters:
-      service: hana
-      service-plan: hdi-shared
   - name: EnterpriseProcurementModel-auth
     type: org.cloudfoundry.managed-service
     parameters:
@@ -91,3 +86,8 @@ resources:
               - '$XSAPPNAME.userattributes'
     requires:
       - name: app-api
+  - name: EnterpriseProcurementModel-db
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared

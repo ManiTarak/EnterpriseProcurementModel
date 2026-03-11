@@ -1,12 +1,12 @@
 {
-    "welcomeFile": "webapp/",
+    "welcomeFile": "epmui/webapp/index.html",
     "authenticationMethod": "route",
     "sessionTimeout": 100,
     "routes": [
         {
-            "source": "^/webapp/(.*)",
+            "source": "^/epmui/(.*)",
             "target": "/$1",
-            "localDir": "webapp/",
+            "localDir": "epmui/",
             "authenticationType": "xsuaa"
         },
         {
